@@ -1,6 +1,5 @@
-package com.reactive.demo.controllers;
+package com.reactive.demo.reactiveController;
 
-import com.reactive.demo.models.User;
 import com.reactive.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,14 +10,13 @@ import reactor.core.publisher.Flux;
 
 @RestController
 @RequestMapping("/users")
-public class UserController {
+public class UserReactiveController {
 
     @Autowired
     UserService userService;
 
     @GetMapping
-    public Flux<User> getAllUsers(){
-        userService.createUserList();
-        return userService.getUserList();
+    public Flux<Integer> getAllUsers(){
+        return userService.getUserFlux();
     }
 }

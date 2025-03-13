@@ -10,15 +10,16 @@ import java.util.List;
 @Service
 public class UserService {
 
-    List<User> userList = new ArrayList<>();
 
-    public Flux<User> getUserList() {
-        return Flux.fromStream(userList.stream());
+    public Flux<Integer> getUserFlux() {
+        Flux<Integer> flux= Flux.just(1,2,3,4);
+        return flux;
     }
 
-    public void createUserList() {
-        userList.add(new User("User1","Email1"));
-        userList.add(new User("User2","Email2"));
-        userList.add(new User("User3","Email3"));
+    public List<Integer> getUserList() {
+        List<Integer> list= new ArrayList<>(List.of(1,2,3,4));
+
+        return list;
     }
+
 }
