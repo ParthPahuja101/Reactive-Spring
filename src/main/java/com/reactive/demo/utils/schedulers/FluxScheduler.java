@@ -50,7 +50,6 @@ class FluxSchedulerParallel {
 
     }
 
-
 }
 
 
@@ -65,8 +64,6 @@ class FluxSchedulerElastic {
                 .sequential()  // Converts back to sequential Flux (if needed)
                 .blockLast();
 
-
     }
-
 
 }
