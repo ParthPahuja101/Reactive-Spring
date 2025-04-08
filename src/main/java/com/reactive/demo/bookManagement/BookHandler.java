@@ -1,7 +1,7 @@
 package com.reactive.demo.bookManagement;
 
-import com.reactive.demo.bookManagement.domain.AuditLogs;
 import com.reactive.demo.bookManagement.domain.Book;
+import com.reactive.demo.bookManagement.exceptions.BookNotFoundException;
 import com.reactive.demo.bookManagement.repo.AuditLogRepository;
 import com.reactive.demo.bookManagement.repo.BookRepository;
 
@@ -36,7 +36,7 @@ public class BookHandler {
         Long id = Long.parseLong(request.pathVariable("id"));
         return bookRepository.findById(id)
                 .flatMap(book -> ServerResponse.ok().bodyValue(book))
-                .switchIfEmpty(ServerResponse.notFound().build());
+                .switchIfEmpty(Mono.error(new BookNotFoundException("Book not found with id: " + id)));
     }
 
     public Mono<ServerResponse> getBookByIdFromHeader(ServerRequest request) {
@@ -44,7 +44,7 @@ public class BookHandler {
         Long id = Long.parseLong(headerId);
         return bookRepository.findById(id)
                 .flatMap(book -> ServerResponse.ok().bodyValue(book))
-                .switchIfEmpty(ServerResponse.notFound().build());
+                .switchIfEmpty(Mono.error(new BookNotFoundException("Book not found with id: " + id)));
     }
 
     public Mono<ServerResponse> createBook(ServerRequest request) {
