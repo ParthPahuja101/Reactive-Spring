@@ -24,7 +24,7 @@ class FluxSchedulerSingle {
         flux.subscribeOn(Schedulers.single()) // Single-threaded scheduler
             .subscribe(i -> System.out.println(Thread.currentThread().getName() + " - " + i));
 
-//        Thread.sleep(2000);
+        Thread.sleep(2000);
 
 //        flux.subscribeOn(Schedulers.single())
 //                .doOnNext(i -> System.out.println(Thread.currentThread().getName() + " - " + i))
