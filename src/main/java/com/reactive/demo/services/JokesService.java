@@ -17,7 +17,7 @@ public class JokesService {
     public Mono<Joke> getJokeById(int id){
         return webClient
                 .get()
-                .uri("/random_joke/{id}",id)
+                .uri("/jokes/{id}",id)
                 .exchangeToMono( clientResponse -> {
                     if (clientResponse.statusCode().is2xxSuccessful()) {
                         return clientResponse.bodyToMono(Joke.class);  // Extract response body

@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 public class Helpers {
     public static void main(String[] args) {
-        optionalToMono();
+        transformations();
     }
 
     public static void empty(){
