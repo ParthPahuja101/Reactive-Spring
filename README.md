@@ -16,12 +16,14 @@
 ```
 Parking Management->
 Requirements-
-1) We need to have a list of parking slots
+1) We need to have a table for parking slots
         ParkingSlot(
             Int id;
             String type: [Bike,Car]
             Boolean isOccupied;
         )
+    We will expose an api to create parking slots, RequestBody(vehicleType: CAR/BIKE, isOccupied: false)
+    If we need to create 10 slots then we will need to hit this api 10 times.
 2) An API to get available parking slots for car/bike.
     API should return 404 is no parking slot available
     ParkingRecord(
