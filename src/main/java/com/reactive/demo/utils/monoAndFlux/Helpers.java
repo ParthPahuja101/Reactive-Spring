@@ -1,6 +1,6 @@
 package com.reactive.demo.utils.monoAndFlux;
 
-import com.reactive.demo.utils.subscriber.FluxSubscriber;
+
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 public class Helpers {
     public static void main(String[] args) {
-        transformations();
+        test6();
     }
 
     public static void empty(){
@@ -89,5 +89,26 @@ public class Helpers {
 
         Mono<String> mono = Mono.justOrEmpty(optional);
         mono.subscribe(System.out::println);
+    }
+
+    public static void test6(){
+        Flux<Integer> flux = Flux.just(1, 2, 0, 4);
+
+        flux.map(n -> {
+                if(n==0) return -1;
+                else return 10 / n;
+                })
+                .subscribe(System.out::println);
+
+        flux.map(n -> 10 / n)
+                .onErrorContinue((throwable, item) -> {
+                    System.out.println(-1);
+                })
+                .subscribe(System.out::println);
+
+        flux.map(n -> 10 / n)
+                .onErrorResume(e-> Flux.just(-1,4)).
+                subscribe(System.out::println);
+
     }
 }

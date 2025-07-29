@@ -4,15 +4,25 @@ import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 
 public class FluxSubscriber implements Subscriber {
+
+    Subscription s;
+
     @Override
     public void onSubscribe(Subscription subscription) {
         System.out.println("onSubscribe");
-        subscription.request(Long.MAX_VALUE);
+        s=subscription;
+        subscription.request(1);
     }
 
     @Override
     public void onNext(Object o) {
         System.out.println("onNext: " + o);
+        try {
+            Thread.sleep(500);
+            s.request(1);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

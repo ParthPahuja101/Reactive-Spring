@@ -5,9 +5,9 @@ import reactor.core.publisher.Flux;
 public class BackPressure {
     public static void main(String[] args){
 
-        Flux.range(1, 1000000)
+        Flux.range(1, 100)
                 .log()
-                .limitRate(10)  // Requests only 10 items at a time
+                .limitRate(10)  // Processes only 10 items at a time
                 .subscribe(i -> {
                     try {
                         Thread.sleep(10);  // Simulating slow consumer

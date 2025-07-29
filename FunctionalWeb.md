@@ -93,3 +93,14 @@ public class ProductsRouter {
 }
 ```
 
+```
+
+User user1 = new User(1,"Harry", "harry@griffindor.com");
+User user2 = new User(2,"Ron", "ron@griffindor.com");
+User user3 = new User(3,"Hermoine", "hermoine@griffindor.com");
+
+
+/users - returns all users
+/users/{id} - returns user by id 
+```
+

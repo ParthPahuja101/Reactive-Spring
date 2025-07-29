@@ -148,19 +148,6 @@ Mono<String> data = WebClient.create("http://example.com")
 ```
 
 
-##### onErrorResume()
-```
-Mono<User> user =  webClient.get()
-    .uri("/users/{id}", userId)
-    .retrieve()
-    .onStatus(HttpStatus::is4xxClientError,
-              response -> Mono.error(new RuntimeException("Client Error")))
-    .onStatus(HttpStatus::is5xxServerError,
-              response -> Mono.error(new RuntimeException("Server Error")))
-    .bodyToMono(String.class)
-    .doOnError(error -> System.out.println("Error: " + error.getMessage()));
-
-```
 
 ##### onStatus()
 ```
