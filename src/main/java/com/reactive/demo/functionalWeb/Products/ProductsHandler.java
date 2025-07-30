@@ -25,7 +25,7 @@ public class ProductsHandler {
         return productsService.getProductById(id).flatMap(
                 product -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
-                        .body(product, Products.class)
+                        .bodyValue(product)
         ).switchIfEmpty(ServerResponse.notFound().build());
     }
 
