@@ -23,10 +23,10 @@ Requirements-
     We need to validate that the movie we are booking ticket for exists, should have available capacity 
     and decrease the availabla capacity by 1 once the ticket is booked
     POST /tickets
-3) An API to get list of all movies with available capacity.
+3) An API to get list of all movies 
     GET /movies
     
-4) An API to get list of movies with available capacity.
+4) An API to get list of movies with available capacity greater than 0.
     GET /available-movies
     
 5) An API to get list of all users who have booked a ticket
